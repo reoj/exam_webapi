@@ -11,6 +11,7 @@ namespace exam_webapi.Models
         public string Name { get; set; } = "Out of Stock";
         public string Description { get; set; } = "";
         public int Quantity { get; set; }
-        public Guid UserId { get; set; }
+        public User Owner { get; set; }
+        public int UserId { get; set; }
     }
 }

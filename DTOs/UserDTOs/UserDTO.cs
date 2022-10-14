@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using exam_webapi.Models;
 
-namespace exam_webapi.Models
+namespace exam_webapi.DTOs.UserDTOs
 {
-    public class User
+    public class UserDTO
     {
         public int UserId { get; set; }
         public string Name { get; set; } = string.Empty;
