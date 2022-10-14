@@ -4,14 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using exam_webapi.DTOs.ItemDTOs;
 using exam_webapi.Models;
+using exam_webapi.Services.UserServices;
 
 namespace exam_webapi.Services.Inventory
 {
     public class ItemService:IInventoryService
     {
         public List<InventoryItem> _inventory { get; set; }
-        public ItemService()
+        private readonly UserService userServices;
+        
+        public ItemService(UserService userServices)
         {
+            this.userServices = userServices;
             _inventory = new List<InventoryItem>();
         }
         public InventoryItem CreateItem(CreateIttemDTO currenItem)
@@ -19,25 +23,41 @@ namespace exam_webapi.Services.Inventory
             InventoryItem nw = new InventoryItem(){
                 ItemId = new Guid(),
                 Name = currenItem.Name,
-
+                Description = currenItem.Description,
+                Quantity = currenItem.Quantity,
+                UserId = currenItem.UserId,
+                Owner = this.userServices.GetUser(currenItem.UserId)
             };
             _inventory.Add(nw);
             return nw;
         }
 
-        public void DeleteItem(Guid id)
+        public InventoryItem DeleteItem(Guid id)
         {
-            throw new NotImplementedException();
+            var old = _inventory.Where(u => u.ItemId == id).SingleOrDefault();
+            _inventory.Remove(old);
+            return old;
         }
 
         public InventoryItem GetItem(Guid id)
         {
-            throw new NotImplementedException();
+            return _inventory.Where(u => u.ItemId == id).SingleOrDefault();
         }
 
-        public void UpdateItem(InventoryItem currenItem)
+        public InventoryItem UpdateItem(InventoryItem currenItem)
         {
-            throw new NotImplementedException();
+            var old = _inventory.Where(u => u.ItemId == currenItem.ItemId).SingleOrDefault();
+            int index = _inventory.IndexOf(old);
+            InventoryItem nw = new InventoryItem(){
+                ItemId = new Guid(),
+                Name = currenItem.Name,
+                Description = currenItem.Description,
+                Quantity = currenItem.Quantity,
+                UserId = currenItem.UserId,
+                Owner = this.userServices.GetUser(currenItem.UserId)
+            };
+            _inventory[index] = nw;
+            return nw;
         }
     }
 }

@@ -1,3 +1,5 @@
+using exam_webapi.DTOs.ItemDTOs;
+using exam_webapi.Models;
 using exam_webapi.Repositories;
 using exam_webapi.Services.Inventory;
 using exam_webapi.Services.UserServices;
@@ -15,10 +17,25 @@ namespace exam_webapi.Controllers
         {
             this._inventory = inventory;            
         }
+        
+        [HttpPost]
+        public ActionResult<InventoryItem> CreateUser(CreateIttemDTO nwItem){
+            return Ok(_inventory.CreateItem(nwItem));
+            
+        }
+        [HttpGet("{id}")]
+        public ActionResult<InventoryItem> GetUser(Guid id){
+            return Ok(_inventory.GetItem(id));
+        }
+        
+        [HttpPut("{id}")]
+        public ActionResult<InventoryItem> UpdateUser(InventoryItem nwItem){
+            return Ok(_inventory.UpdateItem(nwItem));
+        }
+        [HttpDelete("{id}")]
+        public ActionResult<InventoryItem> DeleteUser(Guid id){
+            return Ok(_inventory.DeleteItem(id));
+        }
 
-        // [HttpGet]
-        // [HttpPost]
-        // [HttpPut("{id}")]
-        // [HttpDelete("{id}")]
     }
 }
