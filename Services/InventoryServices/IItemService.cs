@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using exam_webapi.DTOs.ItemDTOs;
 using exam_webapi.Models;
 using exam_webapi.Services.UserServices;
