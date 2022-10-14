@@ -44,12 +44,12 @@ namespace exam_webapi.Services.Inventory
             return _inventory.Where(u => u.ItemId == id).SingleOrDefault();
         }
 
-        public InventoryItem UpdateItem(InventoryItem currenItem)
+        public InventoryItem UpdateItem(UpdateItemDTO currenItem)
         {
             var old = _inventory.Where(u => u.ItemId == currenItem.ItemId).SingleOrDefault();
             int index = _inventory.IndexOf(old);
             InventoryItem nw = new InventoryItem(){
-                ItemId = new Guid(),
+                ItemId = old.ItemId,
                 Name = currenItem.Name,
                 Description = currenItem.Description,
                 Quantity = currenItem.Quantity,

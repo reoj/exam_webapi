@@ -29,7 +29,7 @@ namespace exam_webapi.Controllers
         }
         
         [HttpPut("{id}")]
-        public ActionResult<InventoryItem> UpdateUser(InventoryItem nwItem){
+        public ActionResult<InventoryItem> UpdateUser(UpdateItemDTO nwItem){
             return Ok(_inventory.UpdateItem(nwItem));
         }
         [HttpDelete("{id}")]

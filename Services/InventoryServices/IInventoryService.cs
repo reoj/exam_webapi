@@ -8,7 +8,7 @@ namespace exam_webapi.Services.Inventory
     {
         InventoryItem GetItem(Guid id);
         InventoryItem CreateItem (CreateIttemDTO currenItem);
-        InventoryItem UpdateItem (InventoryItem currenItem);
+        InventoryItem UpdateItem (UpdateItemDTO currenItem);
         InventoryItem DeleteItem (Guid id);
     }
 }
