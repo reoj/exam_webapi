@@ -2,15 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using exam_webapi.DTOs.ItemDTOs;
 using exam_webapi.Models;
 
 namespace exam_webapi.Services.Inventory
 {
     public class ItemService:IInventoryService
     {
-        public void CreateItem(InventoryItem currenItem)
+        public List<InventoryItem> _inventory { get; set; }
+        public ItemService()
         {
-            throw new NotImplementedException();
+            _inventory = new List<InventoryItem>();
+        }
+        public InventoryItem CreateItem(CreateIttemDTO currenItem)
+        {
+            InventoryItem nw = new InventoryItem(){
+                ItemId = new Guid(),
+                Name = currenItem.Name,
+
+            };
+            _inventory.Add(nw);
+            return nw;
         }
 
         public void DeleteItem(Guid id)
@@ -19,11 +31,6 @@ namespace exam_webapi.Services.Inventory
         }
 
         public InventoryItem GetItem(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<InventoryItem> GetItems()
         {
             throw new NotImplementedException();
         }

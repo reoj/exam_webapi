@@ -8,14 +8,10 @@ namespace exam_webapi.Repositories
 {
     public class InventoryRepository
     {
+        public List<InventoryItem> _inventory { get; set; }
         public InventoryRepository()
         {
-            List<InventoryItem> _inventory = new(){
-                new InventoryItem(){
-                    ItemId = new Guid(),
-                    
-                }
-            };
+            _inventory = new List<InventoryItem>();
         }
         
     }

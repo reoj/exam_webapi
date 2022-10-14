@@ -1,4 +1,5 @@
 
+using exam_webapi.DTOs.ItemDTOs;
 using exam_webapi.Models;
 
 namespace exam_webapi.Services.Inventory
@@ -7,7 +8,7 @@ namespace exam_webapi.Services.Inventory
     {
         InventoryItem GetItem(Guid id);
         IEnumerable<InventoryItem> GetItems();
-        void CreateItem (InventoryItem currenItem);
+        void CreateItem (CreateIttemDTO currenItem);
         void UpdateItem (InventoryItem currenItem);
         void DeleteItem (Guid id);
     }
