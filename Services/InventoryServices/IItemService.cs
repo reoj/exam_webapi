@@ -7,9 +7,9 @@ namespace exam_webapi.Services.Inventory
     public class ItemService:IInventoryService
     {
         public List<InventoryItem> _inventory { get; set; }
-        private readonly UserService userServices;
+        private readonly IUserService userServices;
         
-        public ItemService(UserService userServices)
+        public ItemService(IUserService userServices)
         {
             this.userServices = userServices;
             _inventory = new List<InventoryItem>();
@@ -17,7 +17,7 @@ namespace exam_webapi.Services.Inventory
         public InventoryItem CreateItem(CreateIttemDTO currenItem)
         {
             InventoryItem nw = new InventoryItem(){
-                ItemId = new Guid(),
+                ItemId = Guid.NewGuid(),
                 Name = currenItem.Name,
                 Description = currenItem.Description,
                 Quantity = currenItem.Quantity,

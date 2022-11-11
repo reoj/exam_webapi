@@ -10,8 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// builder.Services.AddScoped<IUserService,UserService>();
-// builder.Services.AddScoped<IInventoryService,ItemService>();
+builder.Services.AddScoped<IUserService,UserService>();
+builder.Services.AddScoped<IInventoryService,ItemService>();
 builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
